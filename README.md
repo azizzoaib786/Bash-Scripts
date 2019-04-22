@@ -1,4 +1,4 @@
-# process_monitor_bash_script
+# Process monitor script
 
 You need to pass service name while running the script.
 
