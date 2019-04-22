@@ -21,7 +21,7 @@ do
 		echo "$(tput setaf 3)$PROCESS is not running. Attempt will be made to restart. This is attempt $attempt of 3.$(tput sgr0)" echo >>$log_file
 		echo "$log_time: $PROCESS is not running, Restarting. Attempt $attempt of 3.">>$log_file 
 		echo 
-                systemctl start $PROCESS &
+        sudo systemctl start $PROCESS &
 		sleep 2 # Pause to prevent false positives from restart attempt.
 	else attempt="3"
 	fi 
