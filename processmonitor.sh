@@ -5,13 +5,15 @@ log_file="processmonitor1.log"
 PROCESS=$1
 wait_time="5"
 script_failure="0"
+attempt=0
+max_attempts=3
 
 txtred=$(tput setaf 1) # Red: will indicate a failed process and the information 
 txtgrn=$(tput setaf 2) # Green: this is successful process information 
 txtylw=$(tput setaf 3) # Yellow: this is used to show cautionary information 
 txtrst=$(tput sgr0) # resets text
 
-for attempt in 1 2 3
+for (( attempt=$attempt ; ((attempt<$max_attempts)) ; attempt=(($attempt+1)) ))
 do
 	ps aux | grep "$PROCESS" | grep -v "grep $PROCESS"
 	if [ $? != 0 ]
